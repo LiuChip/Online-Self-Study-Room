@@ -20,6 +20,7 @@ private slots:
     void on_SignupButton_clicked();
 public:
     explicit LoginDialog(QWidget *parent = nullptr);
+    //~LoginDialog();
 signals:
     void LoginSuccess();
 };
