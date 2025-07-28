@@ -5,6 +5,14 @@ LoginDialog::LoginDialog(QWidget *parent) : QDialog(parent), ui(new Ui::LoginDia
 {
     // 加载UI布局（替代原来的setupUI）
     ui->setupUi(this);
+    ui->usernameLineEdit->setAutoFillBackground(false);
+    ui->usernameLineEdit->setCompleter(nullptr); // 禁用自动完成
+    ui->passwdLineEdit->setAutoFillBackground(false);
+    ui->passwdLineEdit->setCompleter(nullptr);
+
+    // 强制清空输入框（覆盖任何潜在默认值）
+    ui->usernameLineEdit->clear();
+    ui->passwdLineEdit->clear();
     ui->usernameLineEdit->setPlaceholderText("请输入用户名");
     // 密码占位符 + 隐藏输入
     ui->passwdLineEdit->setPlaceholderText("请输入密码");

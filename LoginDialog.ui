@@ -1,42 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Dialog</class>
- <widget class="QDialog" name="Dialog">
+ <class>LoginDialog</class>
+ <widget class="QDialog" name="LoginDialog">
+  <property name="windowModality">
+   <enum>Qt::WindowModality::NonModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>200</width>
-    <height>300</height>
+    <width>300</width>
+    <height>400</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>200</width>
-    <height>300</height>
+    <width>300</width>
+    <height>400</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>200</width>
-    <height>300</height>
+    <width>300</width>
+    <height>400</height>
    </size>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>登录</string>
+  </property>
+  <property name="resize" stdset="0">
+   <size>
+    <width>300</width>
+    <height>400</height>
+   </size>
   </property>
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>1</x>
+     <x>0</x>
      <y>0</y>
-     <width>201</width>
-     <height>301</height>
+     <width>297</width>
+     <height>401</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <spacer name="verticalSpacer">
+     <spacer name="verticalSpacer_top">
       <property name="orientation">
        <enum>Qt::Orientation::Vertical</enum>
       </property>
@@ -49,12 +58,52 @@
      </spacer>
     </item>
     <item alignment="Qt::AlignmentFlag::AlignHCenter">
+     <widget class="QLabel" name="avatarLabel">
+      <property name="minimumSize">
+       <size>
+        <width>80</width>
+        <height>80</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>80</width>
+        <height>80</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-radius: 40px;
+background-color: #EEEEEE;
+border: 2px solid #DDDDDD;</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <spacer name="verticalSpacer_1">
+      <property name="orientation">
+       <enum>Qt::Orientation::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>30</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item alignment="Qt::AlignmentFlag::AlignHCenter">
      <widget class="QLineEdit" name="usernameLineEdit">
       <property name="minimumSize">
        <size>
-        <width>160</width>
-        <height>30</height>
+        <width>200</width>
+        <height>35</height>
        </size>
+      </property>
+      <property name="placeholderText">
+       <string>请输入QQ号</string>
       </property>
      </widget>
     </item>
@@ -65,8 +114,8 @@
       </property>
       <property name="sizeHint" stdset="0">
        <size>
-        <width>20</width>
-        <height>40</height>
+        <width>295</width>
+        <height>13</height>
        </size>
       </property>
      </spacer>
@@ -75,9 +124,15 @@
      <widget class="QLineEdit" name="passwdLineEdit">
       <property name="minimumSize">
        <size>
-        <width>160</width>
-        <height>30</height>
+        <width>200</width>
+        <height>35</height>
        </size>
+      </property>
+      <property name="echoMode">
+       <enum>QLineEdit::EchoMode::Password</enum>
+      </property>
+      <property name="placeholderText">
+       <string>请输入密码</string>
       </property>
      </widget>
     </item>
@@ -89,7 +144,7 @@
       <property name="sizeHint" stdset="0">
        <size>
         <width>20</width>
-        <height>40</height>
+        <height>30</height>
        </size>
       </property>
      </spacer>
@@ -98,24 +153,18 @@
      <widget class="QPushButton" name="LoginButton">
       <property name="minimumSize">
        <size>
-        <width>140</width>
-        <height>20</height>
+        <width>180</width>
+        <height>30</height>
        </size>
       </property>
       <property name="maximumSize">
        <size>
-        <width>140</width>
-        <height>20</height>
+        <width>180</width>
+        <height>30</height>
        </size>
       </property>
-      <property name="focusPolicy">
-       <enum>Qt::FocusPolicy::StrongFocus</enum>
-      </property>
-      <property name="layoutDirection">
-       <enum>Qt::LayoutDirection::LeftToRight</enum>
-      </property>
       <property name="text">
-       <string>登陆</string>
+       <string>登录</string>
       </property>
      </widget>
     </item>
@@ -126,31 +175,25 @@
       </property>
       <property name="sizeHint" stdset="0">
        <size>
-        <width>20</width>
-        <height>40</height>
+        <width>295</width>
+        <height>13</height>
        </size>
       </property>
      </spacer>
     </item>
     <item alignment="Qt::AlignmentFlag::AlignHCenter">
      <widget class="QPushButton" name="SignupButton">
-      <property name="enabled">
-       <bool>true</bool>
-      </property>
       <property name="minimumSize">
        <size>
-        <width>140</width>
-        <height>20</height>
+        <width>180</width>
+        <height>30</height>
        </size>
       </property>
       <property name="maximumSize">
        <size>
-        <width>140</width>
-        <height>20</height>
+        <width>180</width>
+        <height>30</height>
        </size>
-      </property>
-      <property name="layoutDirection">
-       <enum>Qt::LayoutDirection::LeftToRight</enum>
       </property>
       <property name="text">
        <string>注册</string>
@@ -158,7 +201,7 @@
      </widget>
     </item>
     <item>
-     <spacer name="verticalSpacer_5">
+     <spacer name="verticalSpacer_bottom">
       <property name="orientation">
        <enum>Qt::Orientation::Vertical</enum>
       </property>

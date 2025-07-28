@@ -12,6 +12,7 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
@@ -25,7 +26,9 @@ class Ui_LoginDialog
 public:
     QWidget *layoutWidget;
     QVBoxLayout *verticalLayout;
-    QSpacerItem *verticalSpacer;
+    QSpacerItem *verticalSpacer_top;
+    QLabel *avatarLabel;
+    QSpacerItem *verticalSpacer_1;
     QLineEdit *usernameLineEdit;
     QSpacerItem *verticalSpacer_2;
     QLineEdit *passwdLineEdit;
@@ -33,71 +36,84 @@ public:
     QPushButton *LoginButton;
     QSpacerItem *verticalSpacer_4;
     QPushButton *SignupButton;
-    QSpacerItem *verticalSpacer_5;
+    QSpacerItem *verticalSpacer_bottom;
 
     void setupUi(QDialog *LoginDialog)
     {
         if (LoginDialog->objectName().isEmpty())
             LoginDialog->setObjectName("LoginDialog");
         LoginDialog->setWindowModality(Qt::WindowModality::NonModal);
-        LoginDialog->resize(200, 300);
-        LoginDialog->setMinimumSize(QSize(200, 300));
-        LoginDialog->setMaximumSize(QSize(200, 300));
+        LoginDialog->resize(300, 400);
+        LoginDialog->setMinimumSize(QSize(300, 400));
+        LoginDialog->setMaximumSize(QSize(300, 400));
+        LoginDialog->setProperty("resize", QVariant(QSize(300, 400)));
         layoutWidget = new QWidget(LoginDialog);
         layoutWidget->setObjectName("layoutWidget");
-        layoutWidget->setGeometry(QRect(1, 0, 201, 301));
+        layoutWidget->setGeometry(QRect(0, 0, 297, 401));
         verticalLayout = new QVBoxLayout(layoutWidget);
         verticalLayout->setObjectName("verticalLayout");
         verticalLayout->setContentsMargins(0, 0, 0, 0);
-        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
+        verticalSpacer_top = new QSpacerItem(20, 40, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
 
-        verticalLayout->addItem(verticalSpacer);
+        verticalLayout->addItem(verticalSpacer_top);
+
+        avatarLabel = new QLabel(layoutWidget);
+        avatarLabel->setObjectName("avatarLabel");
+        avatarLabel->setMinimumSize(QSize(80, 80));
+        avatarLabel->setMaximumSize(QSize(80, 80));
+        avatarLabel->setStyleSheet(QString::fromUtf8("border-radius: 40px;\n"
+"background-color: #EEEEEE;\n"
+"border: 2px solid #DDDDDD;"));
+        avatarLabel->setAlignment(Qt::AlignmentFlag::AlignCenter);
+
+        verticalLayout->addWidget(avatarLabel, 0, Qt::AlignmentFlag::AlignHCenter);
+
+        verticalSpacer_1 = new QSpacerItem(20, 30, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
+
+        verticalLayout->addItem(verticalSpacer_1);
 
         usernameLineEdit = new QLineEdit(layoutWidget);
         usernameLineEdit->setObjectName("usernameLineEdit");
-        usernameLineEdit->setMinimumSize(QSize(160, 30));
+        usernameLineEdit->setMinimumSize(QSize(200, 35));
 
         verticalLayout->addWidget(usernameLineEdit, 0, Qt::AlignmentFlag::AlignHCenter);
 
-        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
+        verticalSpacer_2 = new QSpacerItem(295, 13, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
 
         verticalLayout->addItem(verticalSpacer_2);
 
         passwdLineEdit = new QLineEdit(layoutWidget);
         passwdLineEdit->setObjectName("passwdLineEdit");
-        passwdLineEdit->setMinimumSize(QSize(160, 30));
+        passwdLineEdit->setMinimumSize(QSize(200, 35));
+        passwdLineEdit->setEchoMode(QLineEdit::EchoMode::Password);
 
         verticalLayout->addWidget(passwdLineEdit, 0, Qt::AlignmentFlag::AlignHCenter);
 
-        verticalSpacer_3 = new QSpacerItem(20, 40, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
+        verticalSpacer_3 = new QSpacerItem(20, 30, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
 
         verticalLayout->addItem(verticalSpacer_3);
 
         LoginButton = new QPushButton(layoutWidget);
         LoginButton->setObjectName("LoginButton");
-        LoginButton->setMinimumSize(QSize(140, 20));
-        LoginButton->setMaximumSize(QSize(140, 20));
-        LoginButton->setFocusPolicy(Qt::FocusPolicy::StrongFocus);
-        LoginButton->setLayoutDirection(Qt::LayoutDirection::LeftToRight);
+        LoginButton->setMinimumSize(QSize(180, 30));
+        LoginButton->setMaximumSize(QSize(180, 30));
 
         verticalLayout->addWidget(LoginButton, 0, Qt::AlignmentFlag::AlignHCenter);
 
-        verticalSpacer_4 = new QSpacerItem(20, 40, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
+        verticalSpacer_4 = new QSpacerItem(295, 13, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
 
         verticalLayout->addItem(verticalSpacer_4);
 
         SignupButton = new QPushButton(layoutWidget);
         SignupButton->setObjectName("SignupButton");
-        SignupButton->setEnabled(true);
-        SignupButton->setMinimumSize(QSize(140, 20));
-        SignupButton->setMaximumSize(QSize(140, 20));
-        SignupButton->setLayoutDirection(Qt::LayoutDirection::LeftToRight);
+        SignupButton->setMinimumSize(QSize(180, 30));
+        SignupButton->setMaximumSize(QSize(180, 30));
 
         verticalLayout->addWidget(SignupButton, 0, Qt::AlignmentFlag::AlignHCenter);
 
-        verticalSpacer_5 = new QSpacerItem(20, 40, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
+        verticalSpacer_bottom = new QSpacerItem(20, 40, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
 
-        verticalLayout->addItem(verticalSpacer_5);
+        verticalLayout->addItem(verticalSpacer_bottom);
 
 
         retranslateUi(LoginDialog);
@@ -107,10 +123,10 @@ public:
 
     void retranslateUi(QDialog *LoginDialog)
     {
-        LoginDialog->setWindowTitle(QCoreApplication::translate("LoginDialog", "Dialog", nullptr));
-        usernameLineEdit->setText(QCoreApplication::translate("LoginDialog", "\350\257\267\350\276\223\345\205\245\347\224\250\346\210\267\345\220\215", nullptr));
-        passwdLineEdit->setText(QCoreApplication::translate("LoginDialog", "\350\257\267\350\276\223\345\205\245\345\257\206\347\240\201", nullptr));
-        LoginButton->setText(QCoreApplication::translate("LoginDialog", "\347\231\273\351\231\206", nullptr));
+        LoginDialog->setWindowTitle(QCoreApplication::translate("LoginDialog", "\347\231\273\345\275\225", nullptr));
+        usernameLineEdit->setPlaceholderText(QCoreApplication::translate("LoginDialog", "\350\257\267\350\276\223\345\205\245QQ\345\217\267", nullptr));
+        passwdLineEdit->setPlaceholderText(QCoreApplication::translate("LoginDialog", "\350\257\267\350\276\223\345\205\245\345\257\206\347\240\201", nullptr));
+        LoginButton->setText(QCoreApplication::translate("LoginDialog", "\347\231\273\345\275\225", nullptr));
         SignupButton->setText(QCoreApplication::translate("LoginDialog", "\346\263\250\345\206\214", nullptr));
     } // retranslateUi
 
